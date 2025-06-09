@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#1e1e1e] text-white flex flex-col items-center justify-center min-h-screen px-4">
+
+  <!-- Contenedor del formulario -->
+  <div class="bg-[#2b2b2b] p-8 rounded-2xl shadow-lg w-full max-w-md border border-[#3a3a3a]">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-200">Bienvenido</h2>
+
+    <form id="formulario" class="space-y-4" onsubmit="redirigir(event)">
+      <!-- Campos extra para crear cuenta -->
+      <div id="camposExtra" class="hidden space-y-4">
+        <div>
+          <label class="block text-sm text-gray-400">Nombre</label>
+          <input type="text" class="w-full p-2 rounded-md bg-[#3a3a3a] text-white border border-[#4a4a4a] focus:outline-none focus:ring focus:ring-gray-500" placeholder="Tu nombre" />
+        </div>
+        <div>
+          <label class="block text-sm text-gray-400">Apellido</label>
+          <input type="text" class="w-full p-2 rounded-md bg-[#3a3a3a] text-white border border-[#4a4a4a] focus:outline-none focus:ring focus:ring-gray-500" placeholder="Tu apellido" />
+        </div>
+      </div>
+
+      <!-- Campos comunes -->
+      <div>
+        <label class="block text-sm text-gray-400">Correo electrónico</label>
+        <input type="email" class="w-full p-2 rounded-md bg-[#3a3a3a] text-white border border-[#4a4a4a] focus:outline-none focus:ring focus:ring-gray-500" placeholder="correo@ejemplo.com" required />
+      </div>
+      <div>
+        <label class="block text-sm text-gray-400">Contraseña</label>
+        <input type="password" class="w-full p-2 rounded-md bg-[#3a3a3a] text-white border border-[#4a4a4a] focus:outline-none focus:ring focus:ring-gray-500" placeholder="********" required />
+      </div>
+
+      <!-- Botones -->
+      <div class="flex space-x-4 pt-4">
+        <button type="submit" class="w-1/2 bg-[#4a4a4a] hover:bg-[#5a5a5a] transition p-2 rounded-md">Ingresar</button>
+        <button type="button" id="btnCrear" class="w-1/2 bg-[#6a6a6a] hover:bg-[#7a7a7a] text-black font-semibold transition p-2 rounded-md">Crear cuenta</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Botón para ir directamente a la página principal -->
+  <div class="mt-6">
+    <button
+      onclick="window.location.href='Principal.html'"
+      class="bg-[#3a3a3a] hover:bg-[#505050] text-white font-semibold px-6 py-2 rounded-lg transition">
+      Ir a Principal
+    </button>
+  </div>
+
+  <script>
+    const btnCrear = document.getElementById('btnCrear');
+    const camposExtra = document.getElementById('camposExtra');
+    let creandoCuenta = false;
+
+    btnCrear.addEventListener('click', () => {
+      creandoCuenta = !creandoCuenta;
+      camposExtra.classList.toggle('hidden', !creandoCuenta);
+      btnCrear.textContent = creandoCuenta ? 'Ya tengo cuenta' : 'Crear cuenta';
+    });
+
+    function redirigir(event) {
+      event.preventDefault(); // Previene el envío del formulario
+      window.location.href = "Principal.html"; // Redirige a la página principal
+    }
+  </script>
+
+</body>
+</html>
